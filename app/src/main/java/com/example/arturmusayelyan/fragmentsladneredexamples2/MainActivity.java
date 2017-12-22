@@ -5,22 +5,27 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
     private FragmentManager manager;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         manager = getSupportFragmentManager();
+        textView = findViewById(R.id.show_fragments_change_text_view);
+        manager.addOnBackStackChangedListener(this);
     }
 
     public void addA(View view) {
         FragmentA fragmentA = FragmentA.newInstance();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.frame_layout_fragments_container, fragmentA, "fragmentA");
+        transaction.addToBackStack("addA");
         transaction.commit();
     }
 
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         if (fragmentA != null) {
             FragmentTransaction transaction = manager.beginTransaction();
             transaction.remove(fragmentA);
+            transaction.addToBackStack("removeA");
             transaction.commit();
         } else {
             Toast.makeText(this, "The Fragment A was not added before", Toast.LENGTH_LONG).show();
@@ -39,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentB fragmentB = FragmentB.newInstance();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.frame_layout_fragments_container, fragmentB, "fragmentB");
+        transaction.addToBackStack("replaceAWithB");
         transaction.commit();
     }
 
@@ -46,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentB fragmentB = FragmentB.newInstance();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.frame_layout_fragments_container, fragmentB, "fragmentB");
+        transaction.addToBackStack("addB");
         transaction.commit();
     }
 
@@ -54,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         if (fragmentB != null) {
             FragmentTransaction transaction = manager.beginTransaction();
             transaction.remove(fragmentB);
+            transaction.addToBackStack("removeB");
             transaction.commit();
         } else {
             Toast.makeText(this, "The Fragment B was not added before", Toast.LENGTH_LONG).show();
@@ -65,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentA fragmentA = FragmentA.newInstance();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.frame_layout_fragments_container, fragmentA, "fragmentA");
+        transaction.addToBackStack("replaceBWithA");
         transaction.commit();
     }
 
@@ -73,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         if (fragmentA != null) {
             FragmentTransaction transaction = manager.beginTransaction();
             transaction.attach(fragmentA);
+            transaction.addToBackStack("attachA");
             transaction.commit();
         }
     }
@@ -82,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         if (fragmentA != null) {
             FragmentTransaction transaction = manager.beginTransaction();
             transaction.detach(fragmentA);
+            transaction.addToBackStack("detachA");
             transaction.commit();
         }
     }
@@ -92,5 +104,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void popAddB(View view) {
 
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        textView.setText(textView.getText() + "\n");
+        textView.setText(textView + "The current status of Back Stack");
+        int count = manager.getBackStackEntryCount();
+        for (int i = count - 1; i >= 0; i--) {
+            FragmentManager.BackStackEntry entry = manager.getBackStackEntryAt(i);
+            textView.setText(textView.getText() + " " + entry.getName() + " \n");
+        }
+        textView.setText(textView.getText() + "\n");
     }
 }
