@@ -85,4 +85,12 @@ public class MainActivity extends AppCompatActivity {
             transaction.commit();
         }
     }
+
+    public void back(View view) {
+
+    }
+
+    public void popAddB(View view) {
+
+    }
 }

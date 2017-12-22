@@ -95,7 +95,36 @@
         android:layout_height="200dp"
         android:layout_below="@id/detach_a_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp" />
+        android:layout_marginTop="100dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="see what happens with fragments"
+       android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_below="@id/pop_add_b_button"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/attach_a_button"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:onClick="back"
+        android:text="back" />
+
+    <Button
+        android:id="@+id/pop_add_b_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detach_a_button"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/back_button"
+        android:onClick="popAddB"
+        android:text="pop add b" />
 
 
 </RelativeLayout>
