@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFee00"
+    tools:context="com.example.arturmusayelyan.fragmentsladneredexamples2.MainActivity">
+
+    <Button
+        android:id="@+id/add_a_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:onClick="addA"
+        android:text="ADD a" />
+
+    <Button
+        android:id="@+id/remove_a_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/add_a_button"
+        android:onClick="removeA"
+        android:text="remove a" />
+
+    <Button
+        android:id="@+id/replace_a_with_b_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/remove_a_button"
+        android:onClick="replaceAWithB"
+        android:text="replace a with b" />
+
+    <Button
+        android:id="@+id/add_b_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_a_button"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:onClick="addB"
+        android:text="ADD B" />
+
+    <Button
+        android:id="@+id/remove_b_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/remove_a_button"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/add_b_button"
+        android:onClick="removeB"
+        android:text="remove b" />
+
+    <Button
+        android:id="@+id/replace_b_with_a_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/replace_a_with_b_button"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/remove_b_button"
+        android:onClick="replaceBWithA"
+        android:text="replace b with a" />
+
+    <Button
+        android:id="@+id/attach_a_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_b_button"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:onClick="attachA"
+        android:text="Attach a" />
+
+    <Button
+        android:id="@+id/detach_a_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/remove_b_button"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/attach_a_button"
+        android:onClick="detachA"
+        android:text="Detach a" />
+
+    <FrameLayout
+        android:id="@+id/frame_layout_fragments_container"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/detach_a_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp" />
+
+
+</RelativeLayout>
