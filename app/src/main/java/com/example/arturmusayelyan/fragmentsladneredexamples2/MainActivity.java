@@ -99,17 +99,17 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     }
 
     public void back(View view) {
-
+        manager.popBackStack();
     }
 
     public void popAddB(View view) {
-
+        manager.popBackStack("addB", FragmentManager.POP_BACK_STACK_INCLUSIVE); // kam 0 0-n mi hat e jnjum
     }
 
     @Override
     public void onBackStackChanged() {
         textView.setText(textView.getText() + "\n");
-        textView.setText(textView + "The current status of Back Stack");
+        textView.setText(textView.getText() + "The current status of Back Stack");
         int count = manager.getBackStackEntryCount();
         for (int i = count - 1; i >= 0; i--) {
             FragmentManager.BackStackEntry entry = manager.getBackStackEntryAt(i);
